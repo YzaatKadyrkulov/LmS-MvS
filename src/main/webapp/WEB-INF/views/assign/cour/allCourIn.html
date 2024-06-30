@@ -62,10 +62,10 @@
             <div th:text="'Number of instructors in this course: ' + ${#lists.size(allIns)}" class="instructor-count"></div>
         </div>
         <div class="col-auto ms-auto">
-            <a th:href="@{/instructors/{companyId}/{courseId}/AddInsToCoursey/{courseId}(courseId=${courseId},companyId=${comId})}"
+            <a th:href="@{/instructors/{companyId}/getAllInstructorCompany/{courseId}(courseId=${courseId},companyId=${comId})}"
                class="btn btn-success">+ Assign instructor to course</a>
         </div>
-    </div>
+        </div>
 
     <div class="list-group mt-4">
         <div th:each="instructor : ${allIns}" class="list-group-item list-group-item-action flex-column align-items-start">

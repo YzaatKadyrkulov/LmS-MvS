@@ -83,14 +83,16 @@ public class GroupRepoImpl implements GroupRepo {
     @Override
     public String deleteGroupById(Long groupId) {
         Group group = entityManager.find(Group.class, groupId);
-        List<Course> courses = group.getCourses();
-        for (Course course : courses){
-            course.setGroups(null);
+        if (group != null) {
+            List<Course> courses = group.getCourses();
+            for (Course course : courses) {
+                course.getGroups().remove(group);
+            }
+            group.getCourses().clear();
+
+            entityManager.remove(group);
+            return "Group deleted";
         }
-        group.setCourses(null);
-        entityManager.remove(group);
-        return "Group deleted";
+        return "Group not found";
     }
-
-
 }

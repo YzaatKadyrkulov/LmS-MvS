@@ -18,6 +18,7 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 @RequiredArgsConstructor
 public class WebAppConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
+
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -26,6 +27,7 @@ public class WebAppConfig implements WebMvcConfigurer {
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
+
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -33,6 +35,7 @@ public class WebAppConfig implements WebMvcConfigurer {
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
     }
+
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
